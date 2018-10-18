@@ -34,3 +34,5 @@
 build/
 CMakeFiles/
 calc
+cmake-build-debug
+.idea
