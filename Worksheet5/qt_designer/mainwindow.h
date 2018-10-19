@@ -4,6 +4,8 @@
 #include <QMainWindow>
 #include <QMessageBox>
 #include <QStatusBar>
+#include <string> 
+#include <QMessageBox>
 #include "edititemdialog.h"
 #include "stockitemlistmodel.h"
 
@@ -23,6 +25,7 @@ class MainWindow : public QMainWindow
         void handleAddButton();
         void handleEditButton();
         void handleRemoveButton();
+        void handleSaveAction();
 
     private:
         Ui::MainWindow *ui;

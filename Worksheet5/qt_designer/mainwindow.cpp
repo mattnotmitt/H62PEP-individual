@@ -3,8 +3,6 @@
 #include "stockitem.h"
 #include "edititemdialog.h"
 #include "stockitemlistmodel.h"
-#include <string> 
-#include <QMessageBox>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -18,6 +16,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect( ui->addButton, &QPushButton::released, this, &MainWindow::handleAddButton );
     connect( ui->editButton, &QPushButton::released, this, &MainWindow::handleEditButton );
     connect( ui->removeButton, &QPushButton::released, this, &MainWindow::handleRemoveButton );
+    connect( ui->actionSave, &QAction::triggered, this, &MainWindow::handleSaveAction );
 
     connect( this, &MainWindow::statusUpdateMessage, ui->statusBar, &QStatusBar::showMessage );
 }
@@ -69,3 +68,23 @@ void MainWindow::handleRemoveButton() {
     }
 }
 
+void MainWindow::handleSaveAction() {
+    if (stockList.rowCount() > 0) {
+        QString fileName = QFileDialog::getSaveFileName(this,
+            tr("Save Items"), "",
+            tr("Comma-seperated Values (*.csv);;All Files (*)"));
+        if (fileName.isEmpty()) {
+            emit statusUpdateMessage( QString("Empty filename."), 0 );
+            return;
+        } else {
+            QFile file(fileName);
+            if (!file.open(QIODevice::WriteOnly)) {
+                emit statusUpdateMessage( QString("Unable to open file"), 0);
+                return;
+            }
+            stockList.outputToCSV(file);
+        }
+    } else {
+        emit statusUpdateMessage( QString("Stock list is empty"), 0);
+    }
+}

@@ -1,6 +1,10 @@
 #ifndef STOCKITEMLISTMODEL_H
 #define STOCKITEMLISTMODEL_H
 #include <QAbstractListModel>
+#include <QFile>
+#include <QFileDialog>
+#include <QDataStream>
+#include <iostream>
 #include "stockitem.h"
 class StockItemListModel : public QAbstractListModel {
     Q_OBJECT
@@ -18,6 +22,7 @@ public:
     void insertItem( const StockItem &s, const QModelIndex &index );
     void setItem( const StockItem &s, const QModelIndex &index );
     void removeItem( const QModelIndex &index );
+    void outputToCSV( QFile & file);
     void clearList();
 
     // to allow accessing stored list item properties
