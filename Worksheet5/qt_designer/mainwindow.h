@@ -4,9 +4,11 @@
 #include <QMainWindow>
 #include <QMessageBox>
 #include <QStatusBar>
+#include "edititemdialog.h"
+#include "stockitemlistmodel.h"
 
 namespace Ui {
-class MainWindow;
+    class MainWindow;
 }
 
 class MainWindow : public QMainWindow
@@ -24,6 +26,8 @@ class MainWindow : public QMainWindow
 
     private:
         Ui::MainWindow *ui;
+        StockItemListModel stockList;
+
 
     signals:
         void statusUpdateMessage( const QString & message, int timeout );
