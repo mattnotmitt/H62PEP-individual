@@ -3,7 +3,7 @@
 #include <QAbstractListModel>
 #include <QFile>
 #include <QFileDialog>
-#include <QDataStream>
+#include <QTextStream>
 #include <iostream>
 #include "stockitem.h"
 class StockItemListModel : public QAbstractListModel {

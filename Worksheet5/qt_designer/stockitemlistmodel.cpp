@@ -62,9 +62,8 @@ StockItem StockItemListModel::getItem( const QModelIndex & index ) const {
 }
 
 void StockItemListModel::outputToCSV( QFile & file) {
-    QDataStream out(&file);
-    out.setVersion(QDataStream::Qt_4_5);
-    for ( auto i = stockItems.begin(); i != stockItems.end(); i++ ) {
-        out << qPrintable(i->getName()) << ";" << qPrintable(i->getUnitCost()) << ";" << qPrintable(i->getStockLevel()) << ";" << qPrintable(i->getReorder());
+    QTextStream out(&file);
+    for ( auto i : stockItems) {
+        out << i.getName() << ";" << i.getUnitCost() << ";" << i.getStockLevel()  << ";" << i.getReorder() << endl;
     }
 }

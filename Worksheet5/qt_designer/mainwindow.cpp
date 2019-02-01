@@ -30,11 +30,10 @@ void MainWindow::handleAddButton() {
 	StockItem item;
     QModelIndexList selectedList;
     selectedList = ui->listView->selectionModel()->selectedIndexes();
-    if( selectedList.length() == 1 ) {
+    if( selectedList.length() == 0 ) {
         emit statusUpdateMessage( QString::number(selectedList[0].row()), 0 );
         stockList.insertItem( item, selectedList[0] );
     } else {
-        emit statusUpdateMessage( QString("Add button was clicked, adding"), 0 );
         stockList.addItem( item );
     }
 }
@@ -78,7 +77,7 @@ void MainWindow::handleSaveAction() {
             return;
         } else {
             QFile file(fileName);
-            if (!file.open(QIODevice::WriteOnly)) {
+            if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) {
                 emit statusUpdateMessage( QString("Unable to open file"), 0);
                 return;
             }
