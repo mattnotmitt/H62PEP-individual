@@ -12,7 +12,7 @@ git config user.email "travis@travis-ci.com"
 rm -rf *
 echo "" > .nojekyll
 doxygen $DOXYFILE 2>&1 | tee doxygen.log
-if [ -d "Worksheet7/html" ] && [ -f "Worksheet7/html/index.html" ]; then
+if [ -d "html" ] && [ -f "html/index.html" ]; then
 	git add --all
 	git commit -m "Deploy docs: ${TRAVIS_BUILD_NUMBER}" -m "Commit: ${TRAVIS_COMMIT}"
 	git push--force "https://${GH_REPO_TOKEN}@${GH_REPO_REF}" > /dev/null 2>&1
