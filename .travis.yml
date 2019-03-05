@@ -8,7 +8,7 @@ branches:
 # the generated documentation.
 env:
   global:
-    - GH_REPO_NAME: MathsLib
+    - GH_REPO_NAME: H62PEP-individual
     - DOXYFILE: $TRAVIS_BUILD_DIR/Doxyfile
     - GH_REPO_REF: github.com/artemisbot/H62PEP-individual
 # The virtual machines created by Travis do not by default have doxygen
