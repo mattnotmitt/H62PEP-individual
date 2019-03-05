@@ -9,7 +9,7 @@ branches:
 env:
   global:
     - GH_REPO_NAME: H62PEP-individual
-    - DOXYFILE: $TRAVIS_BUILD_DIR/Doxyfile
+    - DOXYFILE: $TRAVIS_BUILD_DIR/Worksheet7/Doxyfile
     - GH_REPO_REF: github.com/artemisbot/H62PEP-individual
 # The virtual machines created by Travis do not by default have doxygen
 # installed. This is fortunately not difficult on a Debian flavoured Linux
