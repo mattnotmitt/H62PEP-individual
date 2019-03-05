@@ -1,0 +1,11 @@
+sudo: false
+branches:
+  except:
+    - gh-pages
+# Build your code
+script:
+  - mkdir Worksheet7/build
+  - cd Worksheet7/build
+  - cmake ..
+  - make
+  - make test

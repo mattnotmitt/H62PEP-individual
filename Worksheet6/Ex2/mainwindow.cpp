@@ -52,7 +52,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
 
 	// Add the actor to the scene
 	renderer->AddActor(actor);
-	renderer->SetBackground( colors->GetColor3d("Silver").GetData() );
+	renderer->SetBackground( colors->GetColor3d("Black").GetData() );
 
 	// Setup the renderers's camera
 	renderer->ResetCamera();
