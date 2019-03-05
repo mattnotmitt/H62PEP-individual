@@ -1,3 +1,8 @@
+/**
+ * @file
+ * This file contains some function declarations and a bunch of things that are unneccessary in 2019 c++ with good compilers
+ */
+
 // The following two lines prevent adder.h from being included
 // more than once in any source (.cpp) file. If this were to happen
 // it would cause problems in the compile process but it is difficult to
@@ -34,6 +39,9 @@
 // before declarations. This is a Microsoft specific
 // extension to C/C++
 // prototype for our function
+/**
+ * This stupidly basic function adds two numbers together. Why does it exist? nobody knows.
+ */
 MATHSLIB_API int add( int a, int b );
 #endif
 // / calc_cmake/adder.h --------------------------------------
