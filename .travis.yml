@@ -2,6 +2,24 @@ sudo: false
 branches:
   except:
     - gh-pages
+
+# Modify these variables that will be used in generateDocumentationAndDeploy.sh
+# (see below). They tell Doxygen where to find the source on and where to send
+# the generated documentation.
+env:
+  global:
+    - GH_REPO_NAME: MathsLib
+    - DOXYFILE: $TRAVIS_BUILD_DIR/Doxyfile
+    - GH_REPO_REF: github.com/artemisbot/H62PEP-individual
+# The virtual machines created by Travis do not by default have doxygen
+# installed. This is fortunately not difficult on a Debian flavoured Linux
+# system.
+addons:
+  apt:
+    packages:
+      - doxygen
+      - graphviz
+      
 # Build your code
 script:
   - mkdir Worksheet7/build
@@ -9,3 +27,10 @@ script:
   - cmake ..
   - make
   - make test
+# After successfully building and testing your software we give Doxygen the
+# instruction to scan the code for docstrings and generate the html output.
+# The bulk of these instructions is encapsulated in a script.
+after_success:
+  - cd $TRAVIS_BUILD_DIR
+  - chmod +x generateDocumentationAndDeploy.sh
+  - ./generateDocumentationAndDeploy.sh
