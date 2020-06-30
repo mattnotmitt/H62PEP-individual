@@ -26,3 +26,13 @@ jobs:
     - name: Test
       run: make test
       working-directory: Worksheet7/build
+    # Generate doxygen documentation
+    - name: Generate documentation
+      uses: mattnotmitt/doxygen-action@v1
+      with:
+        working-directory: 'Worksheet7/'
+    - name: Deploy docs
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./Worksheet7/html 
